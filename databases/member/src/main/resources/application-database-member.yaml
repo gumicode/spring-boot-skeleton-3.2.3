@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    write:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:13306/member?rewriteBatchedStatements=true
+      username: root
+      password: 1234
+      maximum-pool-size: 40 # hikariCP connection pool
+      max-lifetime: 60000
+    read:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:13307/member?rewriteBatchedStatements=true
+      username: root
+      password: 1234
+      maximum-pool-size: 40 # hikariCP connection pool
+      max-lifetime: 60000
+  jpa:
+    hibernate:
+      ddl-auto: create # DDL 전략
+    open-in-view: false # 지연 로딩 확장 금지
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true # sql query pretty option

@@ -1,0 +1,34 @@
+name: "spring-boot-skeleton"
+services:
+  database-member-write:
+    image: mysql
+    env_file:
+      - ./database/member/write/mysql_write.env
+    container_name: "database-member-write"
+    restart: "no"
+    ports:
+      - 13306:3306
+    volumes:
+      - ./database/member/write/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/member/write/data/:/var/lib/mysql
+    networks:
+      - overlay
+
+  database-member-read:
+    image: mysql
+    env_file:
+      - ./database/member/read/mysql_read.env
+    container_name: "database-member-read"
+    restart: "no"
+    ports:
+      - 13307:3306
+    depends_on:
+      - database-member-write
+    volumes:
+      - ./database/member/read/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/member/read/data/:/var/lib/mysql
+    networks:
+      - overlay
+
+networks:
+  overlay:

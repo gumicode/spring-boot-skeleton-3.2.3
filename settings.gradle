@@ -1,0 +1,5 @@
+rootProject.name = 'spring-boot-skeleton-3.2.3'
+
+include 'services:web'
+
+include 'databases:member'
