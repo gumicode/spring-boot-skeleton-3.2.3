@@ -29,3 +29,7 @@ project(':databases') {
     bootJar.enabled = false
     jar.enabled = false
 }
+project(':databases:mysql') {
+    bootJar.enabled = false
+    jar.enabled = false
+}

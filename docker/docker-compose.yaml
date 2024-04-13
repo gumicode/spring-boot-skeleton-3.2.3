@@ -1,34 +1,94 @@
 name: "spring-boot-skeleton"
 services:
-  database-member-write:
+
+  #database
+  database-mysql-member-write:
     image: mysql
     env_file:
-      - ./database/member/write/mysql_write.env
-    container_name: "database-member-write"
+      - ./database/mysql/member/write/mysql_write.env
+    container_name: "database-mysql-member-write"
     restart: "no"
     ports:
       - 13306:3306
     volumes:
-      - ./database/member/write/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
-      - ./database/member/write/data/:/var/lib/mysql
-    networks:
-      - overlay
-
-  database-member-read:
+      - ./database/mysql/member/write/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/mysql/member/write/data/:/var/lib/mysql
+  database-mysql-member-read:
     image: mysql
     env_file:
-      - ./database/member/read/mysql_read.env
-    container_name: "database-member-read"
+      - ./database/mysql/member/read/mysql_read.env
+    container_name: "database-mysql-member-read"
     restart: "no"
     ports:
       - 13307:3306
     depends_on:
-      - database-member-write
+      - database-mysql-member-write
     volumes:
-      - ./database/member/read/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
-      - ./database/member/read/data/:/var/lib/mysql
-    networks:
-      - overlay
+      - ./database/mysql/member/read/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/mysql/member/read/data/:/var/lib/mysql
 
-networks:
-  overlay:
+  #cache
+  cache-redis-node-1:
+    image: redis
+    container_name: "cache-redis-node-1"
+    command: [ "redis-server","/etc/redis/redis.conf" ]
+    volumes:
+      - ./cache/redis/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/node-1/data:/data
+    ports:
+      - 16371:6379
+  cache-redis-node-2:
+    image: redis
+    container_name: "cache-redis-node-2"
+    command: [ "redis-server","/etc/redis/redis.conf" ]
+    volumes:
+      - ./cache/redis/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/node-2/data:/data
+    ports:
+      - 16372:6379
+    depends_on:
+      - cache-redis-node-1
+  cache-redis-node-3:
+    image: redis
+    container_name: "cache-redis-node-3"
+    command: [ "redis-server","/etc/redis/redis.conf" ]
+    volumes:
+      - ./cache/redis/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/node-3/data:/data
+    ports:
+      - 16373:6379
+    depends_on:
+      - cache-redis-node-2
+  cache-redis-node-4:
+    image: redis
+    container_name: "cache-redis-node-4"
+    command: [ "redis-server","/etc/redis/redis.conf" ]
+    volumes:
+      - ./cache/redis/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/node-4/data:/data
+    ports:
+      - 16374:6379
+    depends_on:
+      - cache-redis-node-3
+  cache-redis-node-5:
+    image: redis
+    container_name: "cache-redis-node-5"
+    command: [ "redis-server","/etc/redis/redis.conf" ]
+    volumes:
+      - ./cache/redis/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/node-5/data:/data
+    ports:
+      - 16375:6379
+    depends_on:
+      - cache-redis-node-4
+  cache-redis-node-6:
+    image: redis
+    container_name: "cache-redis-node-6"
+    command: [ "redis-server","/etc/redis/redis.conf" ]
+    volumes:
+      - ./cache/redis/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/node-6/data:/data
+    ports:
+      - 16376:6379
+    depends_on:
+      - cache-redis-node-5

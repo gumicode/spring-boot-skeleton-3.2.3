@@ -7,8 +7,9 @@ build/
 !**/src/test/**/build/
 
 ## docker ##
-docker/database/member/read/data/
-docker/database/member/write/data/
+docker/database/mysql/**/read/data/
+docker/database/mysql/**/write/data/
+docker/cache/redis/**/data/
 
 ### STS ###
 .apt_generated
