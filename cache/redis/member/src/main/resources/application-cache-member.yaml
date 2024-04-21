@@ -1,0 +1,6 @@
+spring:
+  data:
+    redis:
+      cluster:
+        max-redirects: 3
+        nodes: localhost:16371,localhost:16372,localhost:16373,localhost:16374,localhost:16375,localhost:16376

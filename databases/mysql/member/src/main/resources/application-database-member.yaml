@@ -20,5 +20,4 @@ spring:
     open-in-view: false # 지연 로딩 확장 금지
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true # sql query pretty option

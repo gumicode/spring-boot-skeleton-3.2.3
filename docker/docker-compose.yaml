@@ -28,67 +28,67 @@ services:
       - ./database/mysql/member/read/data/:/var/lib/mysql
 
   #cache
-  cache-redis-node-1:
+  cache-redis-member-node-1:
     image: redis
-    container_name: "cache-redis-node-1"
+    container_name: "cache-redis-member-node-1"
     command: [ "redis-server","/etc/redis/redis.conf" ]
     volumes:
-      - ./cache/redis/redis.conf:/etc/redis/redis.conf
-      - ./cache/redis/node-1/data:/data
+      - ./cache/redis/member/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/member/node-1/data:/data
     ports:
       - 16371:6379
-  cache-redis-node-2:
+  cache-redis-member-node-2:
     image: redis
-    container_name: "cache-redis-node-2"
+    container_name: "cache-redis-member-node-2"
     command: [ "redis-server","/etc/redis/redis.conf" ]
     volumes:
-      - ./cache/redis/redis.conf:/etc/redis/redis.conf
-      - ./cache/redis/node-2/data:/data
+      - ./cache/redis/member/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/member/node-2/data:/data
     ports:
       - 16372:6379
     depends_on:
-      - cache-redis-node-1
-  cache-redis-node-3:
+      - cache-redis-member-node-1
+  cache-redis-member-node-3:
     image: redis
-    container_name: "cache-redis-node-3"
+    container_name: "cache-redis-member-node-3"
     command: [ "redis-server","/etc/redis/redis.conf" ]
     volumes:
-      - ./cache/redis/redis.conf:/etc/redis/redis.conf
-      - ./cache/redis/node-3/data:/data
+      - ./cache/redis/member/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/member/node-3/data:/data
     ports:
       - 16373:6379
     depends_on:
-      - cache-redis-node-2
-  cache-redis-node-4:
+      - cache-redis-member-node-2
+  cache-redis-member-node-4:
     image: redis
-    container_name: "cache-redis-node-4"
+    container_name: "cache-redis-member-node-4"
     command: [ "redis-server","/etc/redis/redis.conf" ]
     volumes:
-      - ./cache/redis/redis.conf:/etc/redis/redis.conf
-      - ./cache/redis/node-4/data:/data
+      - ./cache/redis/member/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/member/node-4/data:/data
     ports:
       - 16374:6379
     depends_on:
-      - cache-redis-node-3
-  cache-redis-node-5:
+      - cache-redis-member-node-3
+  cache-redis-member-node-5:
     image: redis
-    container_name: "cache-redis-node-5"
+    container_name: "cache-redis-member-node-5"
     command: [ "redis-server","/etc/redis/redis.conf" ]
     volumes:
-      - ./cache/redis/redis.conf:/etc/redis/redis.conf
-      - ./cache/redis/node-5/data:/data
+      - ./cache/redis/member/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/member/node-5/data:/data
     ports:
       - 16375:6379
     depends_on:
-      - cache-redis-node-4
-  cache-redis-node-6:
+      - cache-redis-member-node-4
+  cache-redis-member-node-6:
     image: redis
-    container_name: "cache-redis-node-6"
+    container_name: "cache-redis-member-node-6"
     command: [ "redis-server","/etc/redis/redis.conf" ]
     volumes:
-      - ./cache/redis/redis.conf:/etc/redis/redis.conf
-      - ./cache/redis/node-6/data:/data
+      - ./cache/redis/member/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/member/node-6/data:/data
     ports:
       - 16376:6379
     depends_on:
-      - cache-redis-node-5
+      - cache-redis-member-node-5

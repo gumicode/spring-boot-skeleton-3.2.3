@@ -1,14 +1,10 @@
-group = 'team.gumicode.databases.member'
+group = 'team.gumicode.databases.mysql.member'
 version = '0.0.1-SNAPSHOT'
 
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'com.mysql:mysql-connector-j'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
 }
 
 bootJar.enabled = false

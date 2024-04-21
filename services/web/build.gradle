@@ -4,6 +4,7 @@ version = '0.0.1-SNAPSHOT'
 
 dependencies {
     implementation project(':databases:mysql:member')
+    implementation project(':cache:redis:member')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

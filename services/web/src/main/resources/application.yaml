@@ -1,3 +1,5 @@
 spring:
   profiles:
-    include: database-member
+    include:
+      - database-member
+      - cache-redis-member

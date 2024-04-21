@@ -33,6 +33,6 @@ docker exec database-mysql-member-read sh -c "$start_slave_cmd"
 
 docker exec database-mysql-member-read sh -c "export MYSQL_PWD=1234; mysql -u root -e 'SHOW SLAVE STATUS \G'"
 
-docker exec cache-redis-node-1 sh -c 'redis-cli --cluster create cache-redis-node-1:6379 cache-redis-node-2:6379 cache-redis-node-3:6379 cache-redis-node-4:6379 cache-redis-node-5:6379 cache-redis-node-6:6379 --cluster-replicas 1 --cluster-yes'
+docker exec cache-redis-member-node-1 sh -c 'redis-cli --cluster create cache-redis-member-node-1:6379 cache-redis-member-node-2:6379 cache-redis-member-node-3:6379 cache-redis-member-node-4:6379 cache-redis-member-node-5:6379 cache-redis-member-node-6:6379 --cluster-replicas 1 --cluster-yes'
 
-docker exec cache-redis-node-1 sh -c 'redis-cli cluster nodes'
+docker exec cache-redis-member-node-1 sh -c 'redis-cli cluster nodes'
