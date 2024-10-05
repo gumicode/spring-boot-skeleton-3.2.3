@@ -3,7 +3,7 @@ services:
 
   #database
   database-mysql-member-write:
-    image: mysql
+    image: mysql:8.0.39
     env_file:
       - ./database/mysql/member/write/mysql_write.env
     container_name: "database-mysql-member-write"
@@ -14,7 +14,7 @@ services:
       - ./database/mysql/member/write/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
       - ./database/mysql/member/write/data/:/var/lib/mysql
   database-mysql-member-read:
-    image: mysql
+    image: mysql:8.0.39
     env_file:
       - ./database/mysql/member/read/mysql_read.env
     container_name: "database-mysql-member-read"

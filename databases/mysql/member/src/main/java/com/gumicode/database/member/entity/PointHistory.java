@@ -1,6 +1,5 @@
 package com.gumicode.database.member.entity;
 
-import com.gumicode.database.member.converter.PasswordConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,15 +11,17 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(indexes = {@Index(columnList = "username")})
-public class Member extends BaseEntity {
+@Table(indexes = {@Index(columnList = "memberId")})
+public class PointHistory extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    private Long memberId;
 
-    @Convert(converter = PasswordConverter.class)
-    private String password;
+    @Enumerated(EnumType.STRING)
+    private PointAction pointAction;
+
+    private Integer point;
 }
